@@ -28,6 +28,8 @@ class traveler_information
     static int male,female;
     long long int phonenumber;
     string journey_date;
+       int day, month, year;
+    string finaldate;
 
 
     //passenger detail taking function
@@ -36,9 +38,18 @@ class traveler_information
 
                 cout<<endl<<"Enter passenger's name:";
                 getline(cin>>ws, passenger_name);
-
+                
+                re_enter_gender:
                 cout<<"Enter passenger's gender:";
                 cin>>gender;
+                if(gender!="male" )
+                {
+                    if(gender!="female")
+                    {
+                    cout<<"Enter valid data"<<endl;
+                    goto re_enter_gender;
+                    }                
+                }
 
                 cout<<"Enter passenger's age:";
                 cin>>age;
@@ -51,12 +62,23 @@ class traveler_information
                     cout<<"Enter valid phone number";
                     goto reenterphonenumber;
                 }
-                cout<<"Enter jouney date:";
-                cin>>journey_date;
-                if(gender=="male")
-                male++;
-                else if(gender=="female")
-                female++;
+                // cout<<"Enter jouney date:";
+                // cin>>journey_date;
+                    re_enter_date:
+                      cout << "Enter date (dd mm yy): ";
+                      cin >> day >> month >> year;
+                      
+                      if (day > 31 || day < 1 || month > 12 || month < 1 || year < 22)
+                      {
+                          cout << "Invalid date. Please re-enter.\n";
+                          goto re_enter_date;
+                      }
+                      
+                      finaldate = to_string(day) + "/" + to_string(month) + "/" + to_string(year);
+            if(gender=="male")
+            male++;
+            else if(gender=="female")
+            female++;
         
         }
 };
@@ -97,6 +119,7 @@ class destination
                     total_amount=distance*0.50;
                     readlist>>time;
                 }
+        
 
             }
             
@@ -170,15 +193,28 @@ class file_formating
     public:
     void file__start()
     {
-        string date;
+        //string date;
         string day;
-        cout<<"Enter date as 'dd/mm/yyyy':";
-        cin>>date;
+           int day1, month1, year1;
+           string finaldate;
+       // cout<<"Enter date as 'dd/mm/yyyy':";
+        //cin>>date;
+                            re_enter_date:
+                      cout << "Enter date (dd mm yy): ";
+                      cin >> day1 >> month1 >> year1;
+                      
+                      if (day1 > 31 || day1 < 1 || month1 > 12 || month1 < 1 || year1 < 22)
+                      {
+                          cout << "Invalid date. Please re-enter.\n";
+                          goto re_enter_date;
+                      }
+                      
+                      finaldate = to_string(day1) + "/" + to_string(month1) + "/" + to_string(year1);
         cout<<"Enter day:";
         cin>>day;
         fstream file;
         file.open("customer_detail.txt", ios::app);
-        file<<"Date:"<<date<<endl;
+        file<<"Date:"<<finaldate<<endl;
         file<<"Day:"<<day<<endl;
         file.close();
     }
@@ -198,7 +234,7 @@ class file_formating
             out << "Destination City "<<"  :"<<setw(15)<<destination.to;
             out << "\t\t\t\tDistance"<<"           :"<<setw(3)<<destination.distance<<"Km"<<endl;
             out << "Time"<<"               :"<<setw(2)<<destination.time<<"Hr";
-            out << "\t\t\t\tJourney Date "<<"      :"<<setw(15)<<t.journey_date<<endl;
+            out << "\t\t\t\t\t\tJourney Date "<<"      :"<<setw(15)<<t.finaldate<<endl;
             out << "Journey Time "<<"      :"<<setw(15)<<destination.time;
             out << "\t\t\t\tAge"<<"                :"<<setw(15)<<t.age<<endl;
             out << "Gender"<<"             :"<<setw(15)<<t.gender<<endl;
