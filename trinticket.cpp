@@ -6,6 +6,17 @@ using namespace std;
 
 
                    //information taking class
+class welcome
+{public:
+void welcome1()
+   {
+        cout<<"\t\t\t\t\tWelcome to ticket genereter softwer"<<endl;
+        cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
+        cout<<"\t\t\t\t\tPlease enter the data as required  "<<endl;  
+
+
+    }
+}we;
 
 class traveler_information
 {
@@ -244,6 +255,7 @@ class file_formating
 
 int main()
 {
+    we.welcome1();
     int number_of_passengers;
                 cout<<endl<<"Enter total number's of passengers:";
             cin>>number_of_passengers;
