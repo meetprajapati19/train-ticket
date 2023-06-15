@@ -254,7 +254,7 @@ class file_formating
             out << "****************************************************************************" << endl;
             out << "*                              TRAIN TICKET                                *" << endl;
             out << "****************************************************************************" << endl;
-            out <<"Passenger Name "<<"    :"<<left<<setw(25)<<t.passenger_name<<endl;
+            out <<"Passenger Name "<<"    :"<<t.passenger_name<<endl;
             out << "Phone number   "<<"    :"<<setw(15)<<t.phonenumber;
             out << "\t\t\t\tDeparture City "<<"    :"<<setw(15)<<destination.from<<endl;
             out << "Destination City "<<"  :"<<setw(15)<<destination.to;
