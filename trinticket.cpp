@@ -85,47 +85,10 @@ class traveler_information
 int traveler_information::male=0;
 int traveler_information::female=0;
 
-class destination 
-{
-    public:
-    string from;
-    string to;
-    string name_in_file_formate;
-    int distance;
-    int time;
-    float total_amount;
-        void taking_placedetail()
-        {
-            cout<<endl<<"From:";
-            cin>>from;
-            cout<<"To:";
-            cin>>to;
-            name_in_file_formate =from+"-"+to;
-        }
 
-        void check_train_avability()
-        {
-            string list;
-            string read_city;
-            fstream readlist;
-            readlist.open("distancelist.txt");
 
-            while(readlist>>read_city)
-            {
-                if(read_city==name_in_file_formate)
-                {
-                    cout<<read_city<<endl;
-                    readlist>>distance;
-                    total_amount=distance*0.50;
-                    readlist>>time;
-                }
-        
 
-            }
-            
-            readlist.close();
-        }
-}destination;
+
 
 class siting_arrangemante
 {
@@ -183,6 +146,69 @@ switch(select_class)
     seatnumber.close();
     }
 }siting;
+
+
+
+
+
+class destination :public siting_arrangemante
+{
+    public:
+    string from;
+    string to;
+    string name_in_file_formate;
+    int distance;
+    int time;
+    float total_amount;
+        void taking_placedetail()
+        {
+            cout<<endl<<"From:";
+            cin>>from;
+            cout<<"To:";
+            cin>>to;
+            name_in_file_formate =from+"-"+to;
+        }
+
+        void check_train_avability()
+        {
+            string list;
+            string read_city;
+            fstream readlist;
+            readlist.open("distancelist.txt");
+
+            while(readlist>>read_city)
+            {
+                if(read_city==name_in_file_formate)
+                {
+                    cout<<read_city<<endl;
+                    readlist>>distance;
+                    //total_amount=distance*0.50;
+                     switch(siting.select_class) {
+                    case 1:
+                        total_amount = distance * 0.50;
+                        break;
+                    case 2:
+                        total_amount = distance * 0.70;
+                        break;
+                    case 3:
+                        total_amount = distance * 0.80;
+                        break;
+                    case 4:
+                        total_amount = distance * 0.90;
+                        break;
+                     }
+                    readlist>>time;
+                }
+        
+
+            }
+            
+            readlist.close();
+        }
+
+}destination;
+
+
 
 //------------------------------------------------------------------------------------------------------------
                           //file formating class
@@ -301,8 +327,9 @@ formating.file__start();
 for(int i=0;i<number_of_passengers;i++){
 information[i].prsonal_information();
 destination.taking_placedetail();
-destination.check_train_avability();
+
 siting.seat();
+destination.check_train_avability();
 formating.print_file(information[i]);
 formating.file__end();
 //consol.display(information[i]);
