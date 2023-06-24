@@ -2,7 +2,8 @@
 #include<string>
 #include<fstream>
 #include <iomanip>
-#include <stdlib.h>
+#include<windows.h>
+#include <stdio.h>
 using namespace std;
 
 
@@ -11,7 +12,7 @@ class welcome
 {public:
 void welcome1()
    {
-    int choice;
+    
         cout<<"\t\t\t\t\tWelcome to ticket genereter softwer"<<endl;
         cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
         cout<<"\t\t\t\t\tPlease enter the data as required  "<<endl;  
@@ -20,10 +21,44 @@ void welcome1()
         cout<<"2.see the booked tickets"<<endl;
         cout<<"3.see available train"<<endl;
         cout<<"Enter exit any where to close this program"<<endl;
-        cin>>choice;
-        system("cls");
+
     }
 }we;
+
+
+
+class loading
+{
+    public:
+//system("COLOR 0e");
+void loading_page()
+{
+system("cls");
+printf ("*\e[?251") ;
+SetConsoleCP (437);
+SetConsoleOutputCP (437) ;
+int barl = 177, bar2 = 219;
+
+cout<< "\n\n\n\t\t\t\tLoading. ...";
+
+cout << "\n\n\n\t\t\t\t";
+for(int i = 0; i < 25; i++)
+cout << (char)barl;
+
+cout<<"\r";
+
+cout <<"\t\t\t\t";
+for(int i=0;i<25;i++)
+{
+cout << (char)bar2;
+Sleep (150) ;
+}
+
+cout<<"\n\t\t\t\t"<<(char)1<<"!";
+system("Pause");
+}
+
+}lo;
 
 class traveler_information
 {
@@ -324,7 +359,11 @@ class file_formating
 
 int main()
 {
+    int choice;
     we.welcome1();
+            cin>>choice;
+        system("cls");
+        lo.loading_page();
     int number_of_passengers;
                 cout<<endl<<"Enter total number's of passengers:";
             cin>>number_of_passengers;
