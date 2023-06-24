@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>
 #include <iomanip>
+#include <stdlib.h>
 using namespace std;
 
 
@@ -10,11 +11,17 @@ class welcome
 {public:
 void welcome1()
    {
+    int choice;
         cout<<"\t\t\t\t\tWelcome to ticket genereter softwer"<<endl;
         cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
         cout<<"\t\t\t\t\tPlease enter the data as required  "<<endl;  
-
-
+        cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
+        cout<<"1.book the ticket"<<endl;
+        cout<<"2.see the booked tickets"<<endl;
+        cout<<"3.see available train"<<endl;
+        cout<<"Enter exit any where to close this program"<<endl;
+        cin>>choice;
+        system("cls");
     }
 }we;
 
