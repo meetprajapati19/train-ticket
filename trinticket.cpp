@@ -9,8 +9,8 @@ using namespace std;
 
                    //information taking class
 class welcome
-{public:
-void welcome1()
+{ public:
+    void welcome1()
    {
     
         cout<<"\t\t\t\t\tWelcome to ticket genereter softwer"<<endl;
@@ -30,33 +30,35 @@ void welcome1()
 class loading
 {
     public:
-//system("COLOR 0e");
-void loading_page()
-{
-system("cls");
-printf ("*\e[?251") ;
-SetConsoleCP (437);
-SetConsoleOutputCP (437) ;
-int barl = 177, bar2 = 219;
 
-cout<< "\n\n\n\t\t\t\tLoading. ...";
+    void loading_page()
+    {
+        system("COLOR 0e");
+        system("cls");
+        //printf ("*\e[?251") ;
+        SetConsoleCP (437);
+        SetConsoleOutputCP (437) ;
+        int barl = 177, bar2 = 219;
+        cout<< "\n\n\n\t\t\t\t Loading.....";
+        cout << "\n\n\n\t\t\t\t";
 
-cout << "\n\n\n\t\t\t\t";
-for(int i = 0; i < 25; i++)
-cout << (char)barl;
+        for(int i = 0; i < 25; i++)
+        cout << (char)barl;
 
-cout<<"\r";
+        cout<<"\r";
 
-cout <<"\t\t\t\t";
-for(int i=0;i<25;i++)
-{
-cout << (char)bar2;
-Sleep (150) ;
-}
+        cout <<"\t\t\t\t";
 
-cout<<"\n\t\t\t\t"<<(char)1<<"!";
-system("Pause");
-}
+        for(int i=0;i<25;i++)
+        {
+            cout << (char)bar2;
+            Sleep (100) ;
+        }
+
+        system("cls");
+        // cout<<"\n\t\t\t\t"<<(char)1<<"!";
+        // system("Pause");
+    }
 
 }lo;
 
@@ -67,7 +69,7 @@ class traveler_information
     string passenger_name,tem;
     string gender;
     int age;
-    static int male,female;
+    int male,female,total_passenger;
     long long int phonenumber;
     string journey_date;
        int day, month, year;
@@ -81,17 +83,17 @@ class traveler_information
                 cout<<endl<<"Enter passenger's name:";
                 getline(cin>>ws, passenger_name);
                 
-                re_enter_gender:
-                cout<<"Enter passenger's gender:";
-                cin>>gender;
-                if(gender!="male" )
-                {
-                    if(gender!="female")
-                    {
-                    cout<<"Enter valid data"<<endl;
-                    goto re_enter_gender;
-                    }                
-                }
+                // re_enter_gender:
+                // cout<<"Enter passenger's gender:";
+                // cin>>gender;
+                // if(gender!="male" )
+                // {
+                //     if(gender!="female")
+                //     {
+                //     cout<<"Enter valid data"<<endl;
+                //     goto re_enter_gender;
+                //     }                
+                // }
 
                 cout<<"Enter passenger's age:";
                 cin>>age;
@@ -117,20 +119,43 @@ class traveler_information
                       }
                       
                       finaldate = to_string(day) + "/" + to_string(month) + "/" + to_string(year);
-            if(gender=="male")
-            male++;
-            else if(gender=="female")
-            female++;
-        
+            // if(gender=="male")
+            // male++;
+            // else if(gender=="female")
+            // female++;
+            cout<<"Enter total number of passenger:";
+            cin>>total_passenger;
+            cout<<"Enter total number of male passenger:";
+            cin>>male;
+            cout<<"Enter total number of female passenger:";
+            cin>>female;
+
         }
 };
-int traveler_information::male=0;
-int traveler_information::female=0;
 
 
 
 
-
+class read_trainlist
+{
+    
+    public:
+    string temp;
+    string temp1;
+    string temp2;
+    void read_available_trainlist()
+    {
+        fstream file;
+        file.open("distancelist.txt");
+        //file.seekg(0,ios::beg);
+        while(file>>temp)
+        {
+        cout<<temp<<endl;   
+        file>>temp1>>temp2;
+        }
+file.close();
+    }
+}trainlist_read;
 
 class siting_arrangemante
 {
@@ -297,15 +322,15 @@ class file_formating
             out << "*                              TRAIN TICKET                                *" << endl;
             out << "****************************************************************************" << endl;
             out <<"Passenger Name "<<"    :"<<t.passenger_name<<endl;
-            out << "Phone number   "<<"    :"<<setw(15)<<t.phonenumber;
-            out << "\t\t\t\tDeparture City "<<"    :"<<setw(15)<<destination.from<<endl;
-            out << "Destination City "<<"  :"<<setw(15)<<destination.to;
-            out << "\t\t\t\tDistance"<<"           :"<<setw(3)<<destination.distance<<"Km"<<endl;
-            out << "Time"<<"               :"<<setw(2)<<destination.time<<"Hr";
-            out << "\t\t\t\t\t\tJourney Date "<<"      :"<<setw(15)<<t.finaldate<<endl;
-            out << "Journey Time "<<"      :"<<setw(15)<<destination.time;
-            out << "\t\t\t\tAge"<<"                :"<<setw(15)<<t.age<<endl;
-            out << "Gender"<<"             :"<<setw(15)<<t.gender<<endl;
+            out << "Phone number   "<<"    :"<<left<<setw(15)<<t.phonenumber;
+            out << "\t\t\t\tDeparture City "<<"    :"<<left<<setw(15)<<destination.from<<endl;
+            out << "Destination City "<<"  :"<<left<<setw(15)<<destination.to;
+            out << "\t\t\t\tDistance"<<"           :"<<left<<setw(3)<<destination.distance<<"Km"<<endl;
+            out << "Time"<<"               :"<<left<<setw(2)<<destination.time<<"Hr";
+            out << "\t\t\t\t\t\tJourney Date "<<"      :"<<left<<setw(15)<<t.finaldate<<endl;
+            out << "Journey Time "<<"      :<<left"<<setw(15)<<destination.time;
+            out << "\t\t\t\tAge"<<"                :"<<left<<setw(15)<<t.age<<endl;
+            out << "Gender"<<"             :"<<left<<setw(15)<<t.gender<<endl;
             // out << "  Seat Number "<<"       :"<<seat_no << endl<<endl;
             out<<"\t\t\t\t\t\tYour final price is"<<" :"<<destination.total_amount<<"Rs"<<endl;
             out << "***************************************************************************"<<endl<<endl;
@@ -362,25 +387,35 @@ int main()
     int choice;
     we.welcome1();
             cin>>choice;
-        system("cls");
-        lo.loading_page();
-    int number_of_passengers;
-                cout<<endl<<"Enter total number's of passengers:";
-            cin>>number_of_passengers;
+            system("cls");
+            lo.loading_page();
+    if(choice==1){
+                // int number_of_passengers;
+                // cout<<endl<<"Enter total number's of passengers:";
+                // cin>>number_of_passengers;
 
-traveler_information information[number_of_passengers];
+//traveler_information information[number_of_passengers];
+traveler_information information;
 formating.file__start();
-for(int i=0;i<number_of_passengers;i++){
-information[i].prsonal_information();
+//for(int i=0;i<number_of_passengers;i++){
+//information[i].prsonal_information();
+information.prsonal_information();
 destination.taking_placedetail();
 
 siting.seat();
 destination.check_train_avability();
-formating.print_file(information[i]);
+//formating.print_file(information[i]);
+formating.print_file(information);
 formating.file__end();
-//consol.display(information[i]);
 }
 
-return 0;
+else if(choice==3)
+{
+    trainlist_read.read_available_trainlist();
+}
+//consol.display(information[i]);
+//}
+
+return 0; 
 
 }
