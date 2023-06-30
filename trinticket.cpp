@@ -328,7 +328,7 @@ class file_formating
             out << "\t\t\t\tDistance"<<"           :"<<left<<setw(3)<<destination.distance<<"Km"<<endl;
             out << "Time"<<"               :"<<left<<setw(2)<<destination.time<<"Hr";
             out << "\t\t\t\t\t\tJourney Date "<<"      :"<<left<<setw(15)<<t.finaldate<<endl;
-            out << "Journey Time "<<"      :<<left"<<setw(15)<<destination.time;
+            out << "Journey Time "<<"      :"<<left<<setw(15)<<destination.time;
             out << "\t\t\t\tAge"<<"                :"<<left<<setw(15)<<t.age<<endl;
             out << "Gender"<<"             :"<<left<<setw(15)<<t.gender<<endl;
             // out << "  Seat Number "<<"       :"<<seat_no << endl<<endl;
