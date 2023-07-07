@@ -109,7 +109,7 @@ class traveler_information
                 // cout<<"Enter jouney date:";
                 // cin>>journey_date;
                     re_enter_date:
-                      cout << "Enter date (dd mm yy): ";
+                      cout << "Enter journey date (dd mm yy): ";
                       cin >> day >> month >> year;
                       
                       if (day > 31 || day < 1 || month > 12 || month < 1 || year < 22)
@@ -306,7 +306,7 @@ class file_formating
         cout<<"Enter day:";
         cin>>day;
         fstream file;
-        file.open("customer_detail.txt", ios::app);
+        file.open("bookedticket.txt", ios::app);
         file<<"Date:"<<finaldate<<endl;
         file<<"Day:"<<day<<endl;
         file.close();
@@ -315,7 +315,7 @@ class file_formating
 
  void print_file(traveler_information &t)    {
  fstream out;
- out.open("customer_detail.txt",ios::app);
+ out.open("bookedticket.txt",ios::app);
             out << "****************************************************************************" << endl;
             out << "*                             GUJRAT RAILWAY                               *" << endl;
             out << "****************************************************************************" << endl;
@@ -345,13 +345,36 @@ class file_formating
     {
             fstream file;
         //file ending formating 
-        file.open("customer_detail.txt", ios::app);
+        file.open("bookedticket.txt", ios::app);
         file<<"--------------------------------------------------------------------------------------------"<<endl;
         file.close();
     }
 }formating;
 
+class read_booked_ticket
+{public:
 
+    string date_of_data;
+    string first,second;
+    void read_tickets(){
+       cout<<"data of which date you want(enter date as dd/mm/yy):";
+       cin>>date_of_data;
+       fstream file;
+       file.open("bookedticket.txt");
+       while(!file.eof( )){
+        file>>first;
+        if(first=="Date:"+date_of_data){
+
+            for(int i=0;i<15;i++){
+            getline(file,second);
+            cout<<second<<endl;
+            }
+           //break;
+        }
+       }
+file.close();
+    }
+}booked_tickets;
  
 // //class consol_display
 // {
@@ -412,6 +435,11 @@ destination.check_train_avability();
 formating.print_file(information);
 formating.file__end();
 goto start1;
+}
+
+
+else if(choice==2){
+booked_tickets.read_tickets();
 }
 
 else if(choice==3)
