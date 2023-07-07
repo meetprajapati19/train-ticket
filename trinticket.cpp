@@ -321,16 +321,18 @@ class file_formating
             out << "****************************************************************************" << endl;
             out << "*                              TRAIN TICKET                                *" << endl;
             out << "****************************************************************************" << endl;
-            out <<"Passenger Name "<<"    :"<<t.passenger_name<<endl;
-            out << "Phone number   "<<"    :"<<left<<setw(15)<<t.phonenumber;
-            out << "\t\t\t\tDeparture City "<<"    :"<<left<<setw(15)<<destination.from<<endl;
-            out << "Destination City "<<"  :"<<left<<setw(15)<<destination.to;
-            out << "\t\t\t\tDistance"<<"           :"<<left<<setw(3)<<destination.distance<<"Km"<<endl;
-            out << "Time"<<"               :"<<left<<setw(2)<<destination.time<<"Hr";
-            out << "\t\t\t\t\t\tJourney Date "<<"      :"<<left<<setw(15)<<t.finaldate<<endl;
-            out << "Journey Time "<<"      :"<<left<<setw(15)<<destination.time;
-            out << "\t\t\t\tAge"<<"                :"<<left<<setw(15)<<t.age<<endl;
-            out << "Gender"<<"             :"<<left<<setw(15)<<t.gender<<endl;
+            out <<"Passenger Name "<<"        :"<<t.passenger_name<<endl;
+            out << "Phone number   "<<"       :"<<left<<setw(15)<<t.phonenumber;
+            out << "\t\t\t\tDeparture City "<<"       :"<<left<<setw(15)<<destination.from<<endl;
+            out << "Destination City "<<"     :"<<left<<setw(15)<<destination.to;
+            out << "\t\t\t\tDistance"<<"              :"<<left<<setw(3)<<destination.distance<<"Km"<<endl;
+            out << "Time"<<"                  :"<<left<<setw(2)<<destination.time<<"Hr    ";
+            out << "\t\t\t\t\t\tJourney Date "<<"     :"<<left<<setw(15)<<t.finaldate<<endl;
+            out << "Journey Time "<<"         :"<<left<<setw(15)<<destination.time;
+            out << "\t\t\t\tAge"<<"                   :"<<left<<setw(15)<<t.age<<endl;
+            out << "Total passenger"<<"       :"<<left<<setw(15)<<t.total_passenger;
+            out << "\t\t\t\tTotal male passenger"<<"  :"<<left<<setw(15)<<t.male<<endl;
+            out << "Total female passenger"<<":"<<left<<setw(15)<<t.female<<endl;
             // out << "  Seat Number "<<"       :"<<seat_no << endl<<endl;
             out<<"\t\t\t\t\t\tYour final price is"<<" :"<<destination.total_amount<<"Rs"<<endl;
             out << "***************************************************************************"<<endl<<endl;
@@ -385,6 +387,8 @@ class file_formating
 int main()
 {
     int choice;
+    start2:
+    start1:
     we.welcome1();
             cin>>choice;
             system("cls");
@@ -407,11 +411,13 @@ destination.check_train_avability();
 //formating.print_file(information[i]);
 formating.print_file(information);
 formating.file__end();
+goto start1;
 }
 
 else if(choice==3)
 {
     trainlist_read.read_available_trainlist();
+    goto start2;
 }
 //consol.display(information[i]);
 //}
