@@ -20,7 +20,7 @@ class welcome
         cout<<"1.book the ticket"<<endl;
         cout<<"2.see the booked tickets"<<endl;
         cout<<"3.see available train"<<endl;
-        cout<<"Enter exit any where to close this program"<<endl;
+        cout<<"Enter exit to close this program"<<endl;
 
     }
 }we;
@@ -409,14 +409,14 @@ file.close();
 
 int main()
 {
-    int choice;
+    string choice;
     start2:
     start1:
     we.welcome1();
             cin>>choice;
             system("cls");
             lo.loading_page();
-    if(choice==1){
+    if(choice=="1"){
                 // int number_of_passengers;
                 // cout<<endl<<"Enter total number's of passengers:";
                 // cin>>number_of_passengers;
@@ -438,17 +438,23 @@ goto start1;
 }
 
 
-else if(choice==2){
+else if(choice=="2"){
 booked_tickets.read_tickets();
 }
 
-else if(choice==3)
+else if(choice=="3")
 {
     trainlist_read.read_available_trainlist();
     goto start2;
 }
 //consol.display(information[i]);
 //}
+else if(choice=="exit")
+{
+    SetConsoleOutputCP(CP_UTF8);
+    cout<<"Thank you for using this program 🙏";
+     
+}
 
 return 0; 
 
